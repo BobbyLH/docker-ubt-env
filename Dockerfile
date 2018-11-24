@@ -34,4 +34,13 @@ RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="ys"/' /root/.zshrc
 RUN sed -i '$a plugins=(git incr)' /root/.zshrc
 RUN mkdir /root/.oh-my-zsh/plugins/incr
 RUN wget -P /root/.oh-my-zsh/plugins/incr http://mimosa-pudica.net/src/incr-0.2.zsh
+
+RUN mkdir /var/run/sshd
+RUN echo 'root:screencast' | chpasswd
+RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+EXPOSE 22
+
 CMD ["zsh"]
