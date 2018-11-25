@@ -26,6 +26,8 @@ RUN cnpm install n -g
 RUN ln -s /node/node-v8.13.0-linux-x64/bin/n /usr/local/bin/n
 RUN cnpm install yarn -g
 RUN ln -s /node/node-v8.13.0-linux-x64/bin/yarn /usr/local/bin/yarn
+RUN cnpm install pm2 -g
+RUN ln -s /node/node-v8.13.0-linux-x64/bin/pm2 /usr/local/bin/pm2
 RUN cd /
 RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh &&\
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc &&\
