@@ -10,7 +10,8 @@ apt-get install -y libuv1 &&\
 apt-get install -y build-essential &&\
 apt-get install -y git &&\
 apt-get install -y openssh-server &&\
-apt-get install -y vim
+apt-get install -y vim &&\
+apt-get install -y expect
 
 RUN mkdir /node
 RUN wget -P /node https://nodejs.org/dist/v8.13.0/node-v8.13.0-linux-x64.tar.xz
