@@ -11,14 +11,16 @@ apt-get install -y libicu55 &&\
 apt-get install -y libuv1 &&\
 apt-get install -y build-essential &&\
 apt-get install -y libtool &&\
-apt-get install -y libpcre3 libpcre3-dev &&\
+apt-get install -y libpcre3 &&\
+apt-get install -y libpcre3-dev &&\
+apt-get install -y libssl-dev &&\
 apt-get install -y zlib1g-dev &&\
 apt-get install -y zip &&\
 apt-get install -y unzip &&\
 apt-get install -y daemon &&\
 apt-get install -y git &&\
 apt-get install -y openssh-server &&\
-apt-get install -y openssl libssl-dev &&\
+apt-get install -y openssl &&\
 apt-get install -y vim &&\
 apt-get install -y expect &&\
 apt-get install -y sysvinit-utils &&\
@@ -54,10 +56,9 @@ mkdir /v2ray && cd /v2ray && wget https://install.direct/go.sh &&\
 zsh /v2ray/go.sh
 
 # deploy ssh server
-RUN mkdir /var/run/sshd &&\
-echo 'root:screencast' | chpasswd &&\
+RUN echo 'root:screencast' | chpasswd &&\
 sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&\
-sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd &&\
+sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 EXPOSE 22
