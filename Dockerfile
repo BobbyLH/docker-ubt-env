@@ -8,10 +8,19 @@ apt-get install -y curl &&\
 apt-get install -y libicu55 &&\
 apt-get install -y libuv1 &&\
 apt-get install -y build-essential &&\
+apt-get install -y libtool &&\
+apt-get install -y libpcre3 libpcre3-dev &&\
+apt-get install -y zlib1g-dev &&\
+apt-get install -y zip &&\
+apt-get install -y unzip &&\
+apt-get install -y daemon &&\
 apt-get install -y git &&\
 apt-get install -y openssh-server &&\
+apt-get install -y openssl libssl-dev &&\
 apt-get install -y vim &&\
-apt-get install -y expect
+apt-get install -y expect &&\
+apt-get install -y sysvinit-utils &&\
+apt-get install -y nginx
 
 RUN mkdir /node
 RUN wget -P /node https://nodejs.org/dist/v8.13.0/node-v8.13.0-linux-x64.tar.xz
@@ -37,6 +46,7 @@ RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="ys"/' /root/.zshrc
 RUN sed -i '$a plugins=(git incr)' /root/.zshrc
 RUN mkdir /root/.oh-my-zsh/plugins/incr
 RUN wget -P /root/.oh-my-zsh/plugins/incr http://mimosa-pudica.net/src/incr-0.2.zsh
+RUN mkdir /v2ray && cd /v2ray && curl -L -s https://install.direct/go.sh
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd
