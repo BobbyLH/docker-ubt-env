@@ -29,21 +29,21 @@ apt-get install -y nginx
 
 # install node relative package
 RUN mkdir /node &&\
-wget -P /node https://nodejs.org/dist/v8.13.0/node-v8.13.0-linux-x64.tar.xz &&\
-tar -xvf /node/node-v8.13.0-linux-x64.tar.xz -C /node &&\
-ln -s /node/node-v8.13.0-linux-x64/bin/node /usr/local/bin/node &&\
-ln -s /node/node-v8.13.0-linux-x64/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm &&\
+wget -P /node https://nodejs.org/dist/v8.16.0/node-v8.16.0-linux-x64.tar.xz &&\
+tar -xvf /node/node-v8.16.0-linux-x64.tar.xz -C /node &&\
+ln -s /node/node-v8.16.0-linux-x64/bin/node /usr/local/bin/node &&\
+ln -s /node/node-v8.16.0-linux-x64/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm &&\
 npm install cnpm -g --registry=https://registry.npm.taobao.org &&\
-ln -s /node/node-v8.13.0-linux-x64/bin/cnpm /usr/local/bin/cnpm &&\
+ln -s /node/node-v8.16.0-linux-x64/bin/cnpm /usr/local/bin/cnpm &&\
 cnpm install nrm -g &&\
-ln -s /node/node-v8.13.0-linux-x64/bin/nrm /usr/local/bin/nrm &&\
+ln -s /node/node-v8.16.0-linux-x64/bin/nrm /usr/local/bin/nrm &&\
 nrm add xnpm http://xnpm.ximalaya.com/ &&\
 cnpm install n -g &&\
-ln -s /node/node-v8.13.0-linux-x64/bin/n /usr/local/bin/n &&\
+ln -s /node/node-v8.16.0-linux-x64/bin/n /usr/local/bin/n &&\
 cnpm install yarn -g &&\
-ln -s /node/node-v8.13.0-linux-x64/bin/yarn /usr/local/bin/yarn &&\
+ln -s /node/node-v8.16.0-linux-x64/bin/yarn /usr/local/bin/yarn &&\
 cnpm install pm2 -g &&\
-ln -s /node/node-v8.13.0-linux-x64/bin/pm2 /usr/local/bin/pm2 &&\
+ln -s /node/node-v8.16.0-linux-x64/bin/pm2 /usr/local/bin/pm2 &&\
 cd / &&\
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh &&\
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc &&\
